@@ -1,0 +1,18 @@
+{
+  "main": "lib/index.js",
+  "dependencies": {
+    "@vk-io/hear": "^1.1.0",
+    "dotenv": "^10.0.0",
+    "vk-io": "^4.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^16.7.10"
+  },
+  "scripts": {
+    "start": "node lib/index",
+    "start:dev": "nodemon lib/index",
+    "start:ts": "ts-node src/index",
+    "start:ts-nodemon": "nodemon --exec ts-node src/index",
+    "build": "tsc -w"
+  }
+}
