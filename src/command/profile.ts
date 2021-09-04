@@ -1,6 +1,4 @@
-export const ProfileCommand: commandTypes ={
+export const ProfileCommand: commandTypes = {
   hearConditions: /^(?:профиль)$/i,
-  handler: (context) => {
-    context.send(`Профиль: ...`)
-  }
+  handler: context => context.send(`Профиль: ...`)
 }
