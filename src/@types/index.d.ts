@@ -5,11 +5,11 @@ declare global {
 
   declare global {
     import { NextMiddleware } from "middleware-io"
-    import { HearCondition } from "@vk-io/hear"
+    import { HearConditions } from "@vk-io/hear"
     import { MessageContext } from "vk-io"
 
     type commandTypes = {
-      hearConditions: HearCondition<MessageContext>
+      hearConditions: HearConditions<MessageContext>
       handler: (context: MessageContext, next?: NextMiddleware) => void
     }
   }
