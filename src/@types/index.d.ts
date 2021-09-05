@@ -8,9 +8,9 @@ declare global {
     import { HearConditions } from "@vk-io/hear"
     import { MessageContext } from "vk-io"
 
-    type commandTypes = {
+    type commandTypes = Readonly<{
       hearConditions: HearConditions<MessageContext>
       handler: Middleware<MessageContext>
-    }
+    }>
   }
 }
