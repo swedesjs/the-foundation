@@ -20,11 +20,9 @@ const hearManager = new HearManager<MessageContext>()
 const createUser = (id: number) => usersRepository.save(usersRepository.create({ id }))
 
 vk.updates.on("message", async (context, next) => {
-  let findUser = await usersRepository.findOne(context.senderId)
+  context.user = await usersRepository.findOne(context.senderId)
 
-  if (!findUser) findUser = await createUser(context.senderId)
-
-  context.user = findUser
+  if (!context.user) context.user = await createUser(context.senderId)
 
   await next()
 })
