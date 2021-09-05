@@ -1,5 +1,9 @@
 declare global {
-  declare module "vk-io" {}
+  declare module "vk-io" {
+    export interface MessageContext {
+      user: { id: number; balance: number }
+    }
+  }
   declare module "@vk-io/hear" {}
   declare module "middleware-io" {}
 
