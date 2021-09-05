@@ -3,6 +3,7 @@ import { HearManager } from "@vk-io/hear"
 import { config } from "dotenv"
 
 import * as command from "./command"
+import { usersRepository } from "./connect"
 
 config()
 
@@ -12,7 +13,23 @@ const vk = new VK({
 
 const hearManager = new HearManager<MessageContext>()
 
-vk.updates.on("message_new", hearManager.middleware)
+/**
+ * Creates a user
+ * @param id User Id
+ */
+const createUser = (id: number) => usersRepository.save(usersRepository.create({ id }))
+
+vk.updates.on("message", async (context, next) => {
+  let findUser = await usersRepository.findOne(context.senderId)
+
+  if (!findUser) findUser = await createUser(context.senderId)
+
+  context.user = findUser
+
+  await next()
+})
+
+vk.updates.on("message", hearManager.middleware)
 
 Object.values(command).forEach(({ hearConditions, handler }) => hearManager.hear(hearConditions, handler))
 

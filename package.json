@@ -3,6 +3,8 @@
   "dependencies": {
     "@vk-io/hear": "^1.1.0",
     "dotenv": "^10.0.0",
+    "mysql2": "^2.3.0",
+    "typeorm": "^0.2.37",
     "vk-io": "^4.3.2"
   },
   "devDependencies": {
