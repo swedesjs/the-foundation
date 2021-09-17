@@ -5,7 +5,6 @@
   "username": "root",
   "password": "password",
   "database": "database",
-  "entities": ["lib/**/*.entity{.ts,.js}"],
   "bigNumberStrings": false,
   "synchronize": true
 }

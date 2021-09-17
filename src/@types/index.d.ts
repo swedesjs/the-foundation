@@ -1,20 +1,23 @@
 declare global {
-  declare module "vk-io" {
-    export interface MessageContext {
-      user: { id: number; balance: number }
-    }
-  }
+  declare module "vk-io" {}
   declare module "@vk-io/hear" {}
   declare module "middleware-io" {}
 
   declare global {
     import { Middleware } from "middleware-io"
     import { HearConditions } from "@vk-io/hear"
-    import { MessageContext } from "vk-io"
+    import { MessageContext, MessageEventContext } from "vk-io"
 
-    type commandTypes = Readonly<{
-      hearConditions: HearConditions<MessageContext>
-      handler: Middleware<MessageContext>
-    }>
+    type ContextDefaultState = Record<"user", Record<"id" | "balance", number>>
+
+    type Types<T> = Readonly<
+      Record<"hearConditions", HearConditions<T & ContextDefaultState>> & Record<"handler", Middleware<T & ContextDefaultState>>
+    >
+
+    type commandTypes = Types<MessageContext>
+    type eventTypes = Types<MessageEventContext>
   }
 }
+
+type UnArray<T> = T extends (infer U)[] ? U : never
+type UnPromise<T> = T extends PromiseLike<infer U> ? U : never

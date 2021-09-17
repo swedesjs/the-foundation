@@ -2,8 +2,9 @@ import { MessageContext, VK } from "vk-io"
 import { HearManager } from "@vk-io/hear"
 import { config } from "dotenv"
 
-import * as command from "./command"
 import { usersRepository } from "./connect"
+
+import * as command from "./command"
 
 config()
 
@@ -21,7 +22,7 @@ const createUser = (id: number) => usersRepository.save(usersRepository.create({
 
 vk.updates.on("message", async (context, next) => {
   context.user = await usersRepository.findOne(context.senderId)
-
+  
   if (!context.user) context.user = await createUser(context.senderId)
 
   await next()

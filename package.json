@@ -8,13 +8,17 @@
     "vk-io": "^4.3.2"
   },
   "devDependencies": {
-    "@types/node": "^16.7.10"
+    "@rollup/plugin-json": "^4.1.0",
+    "@types/node": "^16.7.10",
+    "rollup-plugin-typescript2": "^0.30.0"
   },
   "scripts": {
     "start": "node lib/index",
     "start:dev": "nodemon lib/index",
     "start:ts": "ts-node src/index",
     "start:ts-nodemon": "nodemon --exec ts-node src/index",
-    "build": "tsc -w"
+    "build": "tsc -w",
+    "rollup": "rollup --config rollup.config.js",
+    "rollup:watch": "rollup --config rollup.config.js --watch"
   }
 }
