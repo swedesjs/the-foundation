@@ -1,6 +1,8 @@
 import { createConnection, getRepository, Repository } from "typeorm"
+
 import { Users } from "./entites"
 import ormconfig from "../ormconfig.json"
+
 export let usersRepository: Repository<Users>
 
 // @ts-expect-error

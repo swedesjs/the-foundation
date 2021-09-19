@@ -15,7 +15,7 @@ declare global {
     >
 
     type commandTypes = Types<MessageContext>
-    type eventTypes = Types<MessageEventContext>
+    type eventCommandTypes = Types<MessageContext | MessageEventContext>
   }
 }
 

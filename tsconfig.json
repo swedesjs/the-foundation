@@ -14,6 +14,5 @@
     "experimentalDecorators": true,
     "resolveJsonModule": true
   },
-  "include": ["src"],
-  "buildOptions": {}
+  "include": ["src"]
 }
