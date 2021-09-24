@@ -4,9 +4,10 @@ declare global {
   declare module "middleware-io" {}
 
   declare global {
-    import { Middleware } from "middleware-io"
-    import { HearConditions } from "@vk-io/hear"
-    import { MessageContext, MessageEventContext } from "vk-io"
+    // eslint-disable-next-line import/no-extraneous-dependencies
+    import { Middleware } from "middleware-io";
+    import { HearConditions } from "@vk-io/hear";
+    import { MessageContext, MessageEventContext } from "vk-io";
 
     type ContextDefaultState = Record<"user", Record<"id" | "balance", number>>
 
@@ -21,3 +22,6 @@ declare global {
 
 type UnArray<T> = T extends (infer U)[] ? U : never
 type UnPromise<T> = T extends PromiseLike<infer U> ? U : never
+type ExtractInterface<T, K extends keyof T> = {
+  [P in Extract<keyof T, K>]: T[P];
+}

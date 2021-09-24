@@ -1,2 +1,2 @@
-export * from "./profile"
-export * from "./click"
+export * from "./profile";
+export * from "./click";
